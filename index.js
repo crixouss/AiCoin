@@ -3,7 +3,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 
 const { OpenAI } = require('openai');
-const model = 'gpt-3.5-turbo-instruct';
+const model = "gpt-3.5-turbo";
 
 const openai = new OpenAI({
     apiKey: "sk-proj-XhQNXWZmeHUbQGBNvPjPT3BlbkFJftUVoLXbrvnCzDIhzrLE",
@@ -24,7 +24,10 @@ app.post("/chat", async (req, res) => {
     try {
         const completion = await openai.chat.completions.create({
             model: model,
-            prompt: prompt,
+            messages: [
+                { role: "system", content: "You are ChatGPT, a large language model trained by OpenAI." },
+                { role: "user", content: prompt }
+            ],
             max_tokens: 512,
             temperature: 0.7,
         });
