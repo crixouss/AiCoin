@@ -25,7 +25,7 @@ app.post("/chat", async (req, res) => {
         const completion = await openai.chat.completions.create({
             model: model,
             messages: [
-                { role: "system", content: "You are ChatGPT, a large language model trained by OpenAI." },
+                { role: "system", content: "I will integrate you in a coin analyzing app. Also give the exact prise ranges of the last coins sold, based on condition of the coin, Poor to Good Condition: , Very Fine to Extra Fine Condition:, Perfect Condition:" },
                 { role: "user", content: prompt }
             ],
             max_tokens: 512,
