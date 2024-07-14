@@ -1,9 +1,10 @@
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
-
+const multer = require('multer');
 const { OpenAI } = require('openai');
-const model = "gpt-3.5-turbo";
+
+const model = "gpt-4o";
 
 const openai = new OpenAI({
     apiKey: "sk-proj-XhQNXWZmeHUbQGBNvPjPT3BlbkFJftUVoLXbrvnCzDIhzrLE",
@@ -13,20 +14,25 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
-app.post("/chat", async (req, res) => {
-    console.log(req.body.message);
-    const { prompt } = req.body;
+const storage = multer.memoryStorage();
+const upload = multer({ storage: storage });
 
-    if (!prompt) {
-        return res.status(400).send({ error: 'Prompt is required' });
+app.post("/chat", upload.single('file'), async (req, res) => {
+    const file = req.file;
+
+    if (!file) {
+        return res.status(400).send({ error: 'File is required' });
     }
+
+    console.log(`Received file: ${file.originalname}`);
+    // You can process the file here if needed.
 
     try {
         const completion = await openai.chat.completions.create({
             model: model,
             messages: [
-                { role: "system", content: "I will integrate you in a coin analyzing app. Also give the exact prise ranges of the last coins sold, based on condition of the coin, Poor to Good Condition: , Very Fine to Extra Fine Condition:, Perfect Condition:" },
-                { role: "user", content: prompt }
+                { role: "system", content: "I will integrate you in a coin analyzing app. Also give the exact price ranges of the last coins sold, based on condition of the coin, Poor to Good Condition: , Very Fine to Extra Fine Condition:, Perfect Condition:. Don't say that you are an AI!" },
+                { role: "user", content: " Also give the exact price ranges of the last coins sold, based on condition of the coin, Poor to Good Condition: , Very Fine to Extra Fine Condition:, Perfect Condition:." }
             ],
             max_tokens: 512,
             temperature: 0.7,

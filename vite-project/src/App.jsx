@@ -3,12 +3,29 @@ import './App.css';
 import axios from "axios";
 
 function App() {
-    const [prompt, setPrompt] = useState("");
+    const [file, setFile] = useState(null);
     const [response, setResponse] = useState("");
+
+    const handleFileChange = (e) => {
+        setFile(e.target.files[0]);
+    };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post("http://localhost:8080/chat", { prompt }).then((response) => {
+
+        if (!file) {
+            console.log("No file selected.");
+            return;
+        }
+
+        const formData = new FormData();
+        formData.append("file", file);
+
+        axios.post("http://localhost:8080/chat", formData, {
+            headers: {
+                "Content-Type": "multipart/form-data"
+            }
+        }).then((response) => {
             setResponse(response.data.content);
         }).catch((error) => {
             console.log(error);
@@ -20,18 +37,12 @@ function App() {
             <header className="App-header">
                 <h1>Analyze Your Coin!</h1>
                 <form onSubmit={handleSubmit}>
-                    <textarea
-                        value={prompt}
-                        onChange={(e) => setPrompt(e.target.value)}
-                        placeholder="Type your current coin ..."
-                        rows="4"
-                        cols="50"
-                    />
+                    <input type="file" onChange={handleFileChange} />
                     <br />
-                    <button type="submit">Send</button>
+                    <button type="submit">Upload and Analyze</button>
                 </form>
                 <div className="response">
-                    <h2>Analyze:</h2>
+                    <h2>Analysis Result:</h2>
                     <p>{response}</p>
                 </div>
             </header>
