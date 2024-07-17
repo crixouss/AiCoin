@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import './App.css';
 import axios from "axios";
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 function App() {
     const [file, setFile] = useState(null);
