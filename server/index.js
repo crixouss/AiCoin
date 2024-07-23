@@ -3,11 +3,12 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const multer = require('multer');
 const { OpenAI } = require('openai');
+require('dotenv').config();
 
 const model = "gpt-4o";
 
 const openai = new OpenAI({
-    apiKey: "sk-proj-XhQNXWZmeHUbQGBNvPjPT3BlbkFJftUVoLXbrvnCzDIhzrLE",
+    apiKey: process.env.OPENAI_API_KEY,
 });
 
 const app = express();
