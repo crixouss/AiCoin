@@ -26,7 +26,6 @@ app.post("/chat", upload.single('file'), async (req, res) => {
     }
 
     console.log(`Received file: ${file.originalname}`);
-    // You can process the file here if needed.
 
     try {
         const completion = await openai.chat.completions.create({
