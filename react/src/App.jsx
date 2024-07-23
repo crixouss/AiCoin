@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import './App.css';
 import axios from "axios";
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 function App() {
@@ -35,9 +34,9 @@ function App() {
     };
 
     return (
-        <div className="App">
-            <header className="App-header">
-                <h1>Analyze Your Coin!</h1>
+        <div className="container mx-auto px-4 text-white">
+            <header className="">
+                <h1 className={""}>Analyze Your Coin!</h1>
                 <form onSubmit={handleSubmit}>
                     <input type="file" onChange={handleFileChange} />
                     <br />

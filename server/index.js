@@ -31,8 +31,8 @@ app.post("/chat", upload.single('file'), async (req, res) => {
         const completion = await openai.chat.completions.create({
             model: model,
             messages: [
-                { role: "system", content: "I will integrate you in a coin analyzing app. Also give the exact price ranges of the last coins sold, based on condition of the coin, Poor to Good Condition: , Very Fine to Extra Fine Condition:, Perfect Condition:. Don't say that you are an AI!" },
-                { role: "user", content: " Also give the exact price ranges of the last coins sold, based on condition of the coin, Poor to Good Condition: , Very Fine to Extra Fine Condition:, Perfect Condition:." }
+                { role: "system", content: "I will integrate you in a coin analyzing app. Also give the exact price ranges of the last coins sold, based on condition of the coin, Poor to Good Condition: , Very Fine to Extra Fine Condition:, Perfect Condition:. Don't say that you are an AI! make it on 1888 10 pfennig" },
+                { role: "user", content: " Also give the exact price ranges of the last coins sold, based on condition of the coin, Poor to Good Condition: , Very Fine to Extra Fine Condition:, Perfect Condition:. make it on 1888 10 pfennig" }
             ],
             max_tokens: 512,
             temperature: 0.7,
