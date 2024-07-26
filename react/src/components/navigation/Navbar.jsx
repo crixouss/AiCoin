@@ -1,4 +1,11 @@
-import logo from '../../assets/logo/Montminy.png';
+import logo from '../../assets/logo/Logo250x250.png';
+import React from "react";
+
+const NavItems = [
+    {label: "About", href: "/"},
+    {label: "Analyze your Coin", href: "/"},
+    {label: "Contact", href: "/"},
+]
 
 const Navbar = () => {
   return(
@@ -6,8 +13,17 @@ const Navbar = () => {
           <div className={"container px-4 mx-auto relative text-sm"}>
               <div className={"flex justify-center items-center"}>
                   <div className={"flex items-center flex-shrink-0"}>
-                      <img src={logo} alt="Logo" className="h-8 w-8 object-cover" />
+                      <img src={logo} alt="Logo" className="" />
                   </div>
+                  <ul className={"hidden lg:flex ml-14 space-x-12"}>
+                      {NavItems.map((item, i) => (
+                          <li key={i}>
+                              <a href={item.href}>
+                                  {item.label}
+                              </a>
+                          </li>
+                      ))}
+                  </ul>
               </div>
           </div>
       </nav>
