@@ -13,7 +13,7 @@ const Navbar = () => {
           <div className={"container px-4 mx-auto relative text-sm"}>
               <div className={"flex justify-center items-center"}>
                   <div className={"flex items-center flex-shrink-0"}>
-                      <img src={logo} alt="Logo" className="" />
+                      <img src={logo} alt="Logo" className="w-4/5 h-4/5" />
                   </div>
                   <ul className={"hidden lg:flex ml-14 space-x-12"}>
                       {NavItems.map((item, i) => (
