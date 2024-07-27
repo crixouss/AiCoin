@@ -1,4 +1,4 @@
-import logo from '../../assets/logo/Logo250x250.png';
+import logo from '../../assets/logo/Coin.png';
 import React from "react";
 
 const NavItems = [
@@ -13,7 +13,10 @@ const Navbar = () => {
           <div className={"container px-4 mx-auto relative text-sm"}>
               <div className={"flex justify-center items-center"}>
                   <div className={"flex items-center flex-shrink-0"}>
-                      <img src={logo} alt="Logo" className="w-4/5 h-4/5" />
+                      <img src={logo} alt="Coin Logo" className="w-1/4 h-1/4 mr-2" />
+                      <span className={"text-xl tracking-tight"}>
+                          CoinGenius
+                      </span>
                   </div>
                   <ul className={"hidden lg:flex ml-14 space-x-12"}>
                       {NavItems.map((item, i) => (
@@ -24,6 +27,14 @@ const Navbar = () => {
                           </li>
                       ))}
                   </ul>
+                  <div className={"hidden lg:flex justify-center space-x-12 items-center"}>
+                      <a className={"py-2 px-3 border rounded-md"}>
+                          Sign In
+                      </a>
+                      <a className={"bg-gradient-to-r from-orange-500 to-orange-800 py-2 px-3 rounded-md"}>
+                          Create an account
+                      </a>
+                  </div>
               </div>
           </div>
       </nav>
