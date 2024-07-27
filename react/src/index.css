@@ -8,10 +8,22 @@
     font-family: 'Poppins', sans-serif;
 }
 
+/*Dark theme*/
 body {
     @apply bg-white text-black;
 }
 
 .dark body {
     @apply bg-gray-900 text-white;
+}
+
+/*Color selection*/
+::selection {
+    background-color: #946c0a;
+    color: black;
+}
+
+::-moz-selection {
+    background-color: #946c0a;
+    color: black;
 }
