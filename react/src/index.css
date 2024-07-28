@@ -14,7 +14,7 @@ body {
 }
 
 .dark body {
-    @apply bg-gray-900 text-white;
+    @apply bg-[#121212] text-white;
 }
 
 /*Color selection*/
