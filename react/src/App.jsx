@@ -1,14 +1,20 @@
+import {Routes, Route} from "react-router-dom";
+
 import './App.css';
-import AiChat from "./components/ai/AiChat.jsx";
 import Navbar from "./components/navigation/Navbar.jsx";
+import Home from "./components/home/Home.jsx";
 
 
 function App() {
     return (
-       <>
+       <div>
            <Navbar/>
-           <AiChat/>
-       </>
+           <div>
+               <Routes>
+                   <Route path={'/'} element={<Home/>}/>
+               </Routes>
+           </div>
+       </div>
     );
 }
 
