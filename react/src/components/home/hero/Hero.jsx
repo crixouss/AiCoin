@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import video from "../../../assets/aivideos/ShortsFormat.mp4"
+import video from "../../../assets/aivideos/WidthFormat.mp4"
 
 const Hero = () => {
     return (
@@ -29,7 +29,7 @@ const Hero = () => {
                     About us
                 </Link>
             </div>
-            <div className="flex mt-10 w-1/2 justify-center">
+            <div className="flex mt-10 w-2/3 justify-center">
                 <video
                     autoPlay
                     loop
