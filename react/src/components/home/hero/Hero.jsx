@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import video from "../../../assets/aivideos/ShortsFormat.mp4"
 
 const Hero = () => {
     return (
@@ -28,14 +29,14 @@ const Hero = () => {
                     About us
                 </Link>
             </div>
-            <div className="flex mt-10 justify-center">
+            <div className="flex mt-10 w-1/2 justify-center">
                 <video
                     autoPlay
                     loop
                     muted
                     className="rounded-lg w-1/2 border border-orange-700 shadow-sm shadow-orange-400 mx-2 my-4"
                 >
-                    <source src={""} type="video/mp4"/>
+                    <source src={video} type="video/mp4"/>
                     Your browser does not support the video tag.
                 </video>
                 <video
@@ -44,7 +45,7 @@ const Hero = () => {
                     muted
                     className="rounded-lg w-1/2 border border-orange-700 shadow-sm shadow-orange-400 mx-2 my-4"
                 >
-                    <source src={""} type="video/mp4"/>
+                    <source src={video} type="video/mp4"/>
                     Your browser does not support the video tag.
                 </video>
             </div>
