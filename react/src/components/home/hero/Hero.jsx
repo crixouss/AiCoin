@@ -16,6 +16,7 @@ const Hero = () => {
                 advanced AI-powered app will instantly analyze it, providing you with detailed information and
                 up-to-date market value.
             </p>
+
             <div className="flex justify-center my-10">
                 <Link
                     to="/"
