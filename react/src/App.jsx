@@ -5,6 +5,7 @@ import Navbar from "./components/navigation/Navbar.jsx";
 import Home from "./components/home/Home.jsx";
 import Register from "./components/authentication/register/Register.jsx";
 import LogIn from "./components/authentication/login/LogIn.jsx";
+import AiChat from "./components/ai/AiChat.jsx";
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
                    <Route path={'/'} element={<Home/>}/>
                    <Route path={'/register'} element={<Register/>}/>
                    <Route path={'/signIn'} element={<LogIn/>}/>
+                   <Route path={'/aiChat'} element={<AiChat/>}/>
                </Routes>
            </div>
        </>

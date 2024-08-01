@@ -21,7 +21,7 @@ const Hero = () => {
             <div className="flex justify-center mt-10 mb-3">
                 <Link
                     to="/register"
-                    className="bg-gradient-to-r from-orange-500 to-orange-800 py-3 px-4 mx-3 rounded-md"
+                    className="bg-gradient-to-r from-main-dark to-orange-800 py-3 px-4 mx-3 rounded-md"
                 >
                     Start Analyzing
                 </Link>
