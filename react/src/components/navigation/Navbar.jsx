@@ -5,9 +5,9 @@ import {Link} from "react-router-dom";
 import Logo from '../../assets/logo/Coin.png';
 
 const NavItems = [
-    {label: "About", to: "/About"},
-    {label: "Analyze your Coin", to: "/Analyze"},
-    {label: "Contact", to: "/Contact"},
+    {label: "About", to: "/about"},
+    {label: "Analyze your Coin", to: "/analyze"},
+    {label: "Contact", to: "/contact"},
 ]
 
 const Navbar = () => {
