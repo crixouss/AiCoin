@@ -40,7 +40,7 @@ const Navbar = () => {
                       <Link to={'/signIn'} className={"transition duration-150 ease-out hover:ease-in py-2 px-3 border rounded-md"}>
                           Sign In
                       </Link>
-                      <Link to={"register"} className={"transition duration-150 ease-out hover:ease-in bg-gradient-to-r from-main-dark to-orange-800 py-2 px-3 rounded-md"}>
+                      <Link to={"/register"} className={"transition duration-150 ease-out hover:ease-in bg-gradient-to-r from-main-dark to-orange-800 py-2 px-3 rounded-md"}>
                           Create an account
                       </Link>
                   </div>
