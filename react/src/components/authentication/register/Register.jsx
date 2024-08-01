@@ -72,6 +72,11 @@ const Register = () => {
                                   type="password"
                                   placeholder="Password"
                               />
+                              <input
+                                  className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-main-dark placeholder-gray-500 text-sm focus:outline-none focus:border-orange-800 focus:bg-white mt-5"
+                                  type="password"
+                                  placeholder="Confirm Password"
+                              />
                               <button
                                   className="mt-5 tracking-wide font-semibold bg-main-dark text-gray-100 w-full py-4 rounded-lg hover:bg-orange-800 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none">
                                   <svg
