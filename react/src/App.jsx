@@ -15,8 +15,8 @@ function App() {
            <Navbar/>
            <div>
                <Routes>
-                   <Route path={"/about"} exact component={<About/>}/>
                    <Route path={'/'} element={<Home/>}/>
+                   <Route path={"/about"} exact component={<About/>}/>
                    <Route path={'/register'} element={<Register/>}/>
                    <Route path={'/signIn'} element={<LogIn/>}/>
                    <Route path={'/aiChat'} element={<AiChat/>}/>
