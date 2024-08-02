@@ -1,22 +1,6 @@
-const express = require('express');
-const cors = require('cors');
-const bodyParser = require('body-parser');
-const multer = require('multer');
-const { OpenAI } = require('openai');
-require('dotenv').config();
-
-const model = "gpt-4o";
-
-const openai = new OpenAI({
-    apiKey: process.env.OPENAI_API_KEY,
-});
-
-const app = express();
-app.use(cors());
-app.use(bodyParser.json());
-
-const storage = multer.memoryStorage();
-const upload = multer({ storage: storage });
+// main.js (or app.js, index.js, etc.)
+const { app, upload } = require('./config/configExpress');
+const { processChat } = require('./services/openaiService');
 
 app.post("/chat", upload.single('file'), async (req, res) => {
     const file = req.file;
@@ -28,20 +12,10 @@ app.post("/chat", upload.single('file'), async (req, res) => {
     console.log(`Received file: ${file.originalname}`);
 
     try {
-        const completion = await openai.chat.completions.create({
-            model: model,
-            messages: [
-                { role: "system", content: "I will integrate you in a coin analyzing app. Also give the exact price ranges of the last coins sold, based on condition of the coin, Poor to Good Condition: , Very Fine to Extra Fine Condition:, Perfect Condition:. Don't say that you are an AI! make it on 1888 10 pfennig" },
-                { role: "user", content: " Also give the exact price ranges of the last coins sold, based on condition of the coin, Poor to Good Condition: , Very Fine to Extra Fine Condition:, Perfect Condition:. make it on 1888 10 pfennig" }
-            ],
-            max_tokens: 512,
-            temperature: 0.7,
-        });
-
-        res.json(completion.choices[0].message);
+        const responseMessage = await processChat(file);
+        res.json(responseMessage);
     } catch (error) {
-        console.error("Error creating completion: ", error);
-        res.status(500).send("An error occurred while processing your request.");
+        res.status(500).send(error.message);
     }
 });
 

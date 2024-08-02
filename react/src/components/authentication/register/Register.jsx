@@ -2,14 +2,35 @@ import { Link } from 'react-router-dom';
 
 import coins from "../../../assets/pictures/login-register/BoyCoinTransparent.png"
 import logo from "../../../assets/logo/Coin.png"
+import {useState} from "react";
 
 const Register = () => {
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [repeatPassword, setRepeatPassword] = useState("");
+
+    async function registerUser(e){
+        e.preventDefault();
+        const response = await fetch('http://localhost:8080/user/register', {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                email, password
+            })
+        })
+        const data = await response.json();
+        console.log(data);
+    }
+
   return (
       <div className="min-h-screen text-gray-900 flex justify-center">
           <div className="max-w-screen-xl m-0 sm:m-10 bg-white shadow sm:rounded-lg flex justify-center flex-1">
               <div className="lg:w-1/2 xl:w-5/12 p-6 sm:p-12">
                   <div>
                       <img
+                          alt={"CoinGenius Logo"}
                           src={logo}
                           className="w-32 mx-auto"
                       />
@@ -61,21 +82,25 @@ const Register = () => {
                                   Or sign up with e-mail
                               </div>
                           </div>
-                          <div className="mx-auto max-w-xs">
+                          <form onSubmit={registerUser} className="mx-auto max-w-xs">
                               <input
                                   className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-main-dark placeholder-gray-500 text-sm focus:outline-none focus:border-orange-800 focus:bg-white"
                                   type="email"
+                                  value={email}
+                                  onChange={(e) => {setEmail(e.target.value)}}
                                   placeholder="Email"
                               />
                               <input
                                   className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-main-dark placeholder-gray-500 text-sm focus:outline-none focus:border-orange-800 focus:bg-white mt-5"
                                   type="password"
+                                  value={password}
+                                  onChange={(e)=> {setPassword(e.target.value)}}
                                   placeholder="Password"
                               />
                               <input
                                   className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-main-dark placeholder-gray-500 text-sm focus:outline-none focus:border-orange-800 focus:bg-white mt-5"
                                   type="password"
-                                  placeholder="Confirm Password"
+                                  placeholder="Repeat Password"
                               />
                               <button
                                   className="mt-5 tracking-wide font-semibold bg-main-dark text-gray-100 w-full py-4 rounded-lg hover:bg-orange-800 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none">
@@ -103,7 +128,7 @@ const Register = () => {
                                       Privacy Policy
                                   </Link>
                               </p>
-                          </div>
+                          </form>
                       </div>
                   </div>
               </div>

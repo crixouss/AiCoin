@@ -1,8 +1,10 @@
 import logo from "../../../assets/logo/Coin.png";
 import {Link} from "react-router-dom";
 import coins from "../../../assets/pictures/login-register/BoyCoinTransparent.png";
+import {useState} from "react";
 
 const LogIn = () => {
+
   return (
       <div className="min-h-screen text-gray-900 flex justify-center">
           <div className="max-w-screen-xl m-0 sm:m-10 bg-white shadow sm:rounded-lg flex justify-center flex-1">
