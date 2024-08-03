@@ -2,18 +2,15 @@
 const {configExpress, upload} = require('./config/configExpress');
 const { processChat } = require('./services/openaiService');
 const express = require("express");
+const {router} = require("./config/configRoutes");
 
 
 async function start() {
     const app = express();
     configExpress(app);
+    app.use(router)
     const port = 8080;
     app.listen(port, () => console.log(`Listening on port ${port}`));
-
-    app.post("/user/register", (req, res) => {
-        console.log(req.body);
-        res.json({ status: "success" });
-    })
 
     app.post("/chat", upload.single('file'), async (req, res) => {
         const file = req.file;
