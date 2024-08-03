@@ -4,6 +4,23 @@ import coins from "../../../assets/pictures/login-register/BoyCoinTransparent.pn
 import {useState} from "react";
 
 const LogIn = () => {
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+
+    async function handleSubmit(e){
+        e.preventDefault();
+        const response = await fetch('http://localhost:8080/user/login', {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                email, password
+            })
+        })
+        const data = await response.json();
+        console.log(data);
+    }
 
   return (
       <div className="min-h-screen text-gray-900 flex justify-center">
@@ -24,7 +41,7 @@ const LogIn = () => {
                           className="w-32 mx-auto"
                       />
                   </div>
-                  <div className="mt-12 flex flex-col items-center">
+                  <form onSubmit={handleSubmit} className="mt-12 flex flex-col items-center">
                       <h1 className="text-2xl xl:text-3xl font-bold">Sign In</h1>
                       <div className="w-full flex-1 mt-8">
                           <div className="flex flex-col items-center">
@@ -75,11 +92,15 @@ const LogIn = () => {
                               <input
                                   className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-main-dark placeholder-gray-500 text-sm focus:outline-none focus:border-orange-800 focus:bg-white"
                                   type="email"
+                                  value={email}
+                                  onChange={(e) => {setEmail(e.target.value)}}
                                   placeholder="Email"
                               />
                               <input
                                   className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-main-dark placeholder-gray-500 text-sm focus:outline-none focus:border-orange-800 focus:bg-white mt-5"
                                   type="password"
+                                  value={password}
+                                  onChange={(e)=> {setPassword(e.target.value)}}
                                   placeholder="Password"
                               />
                               <button
@@ -110,7 +131,7 @@ const LogIn = () => {
                               </p>
                           </div>
                       </div>
-                  </div>
+                  </form>
               </div>
           </div>
       </div>
