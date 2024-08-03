@@ -1,4 +1,4 @@
-const {verifyToken} = require("../services/serviseJwt");
+const {verifyToken} = require("../services/serviceJwt");
 
 function session() {
     return function (req,res, next) {
