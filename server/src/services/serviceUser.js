@@ -2,7 +2,7 @@ const {User} = require("../models/User");
 const bcrypt = require("bcrypt");
 const identityName = 'email';
 
-async function register(identity, password, username) {
+async function register(identity, password) {
     const existing = await User.findOne({
         [identityName]: identity
     })
@@ -13,7 +13,6 @@ async function register(identity, password, username) {
 
     const user = new User({
         [identityName]: identity,
-        username,
         password: await bcrypt.hash(password, 10)
     });
     try {

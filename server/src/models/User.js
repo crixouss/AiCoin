@@ -15,6 +15,8 @@ const userSchema = new Schema({
         locale: 'en',
         strength: 2,
     }
+}, {
+    collection: 'user-data'
 })
 
 const User = model("User", userSchema);

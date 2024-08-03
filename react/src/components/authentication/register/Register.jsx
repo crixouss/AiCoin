@@ -17,7 +17,7 @@ const Register = () => {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
-                email, password
+                email, password, repeatPassword
             })
         })
         const data = await response.json();
@@ -100,6 +100,8 @@ const Register = () => {
                               <input
                                   className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-main-dark placeholder-gray-500 text-sm focus:outline-none focus:border-orange-800 focus:bg-white mt-5"
                                   type="password"
+                                  value={repeatPassword}
+                                  onChange={(e)=> {setRepeatPassword(e.target.value)}}
                                   placeholder="Repeat Password"
                               />
                               <button
