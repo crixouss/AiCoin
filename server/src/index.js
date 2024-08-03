@@ -1,15 +1,16 @@
-// main.js (or app.js, index.js, etc.)
 const {configExpress, upload} = require('./config/configExpress');
-const { processChat } = require('./services/openaiService');
+const {processChat} = require('./services/serviceOpenai');
 const express = require("express");
 const {router} = require("./config/configRoutes");
+const {configDatabase} = require("./config/configDatabase");
 
 
 async function start() {
+    const port = 8080;
     const app = express();
     configExpress(app);
+    await configDatabase()
     app.use(router)
-    const port = 8080;
     app.listen(port, () => console.log(`Listening on port ${port}`));
 
     app.post("/chat", upload.single('file'), async (req, res) => {
