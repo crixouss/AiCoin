@@ -3,6 +3,7 @@ const {processChat} = require('./services/serviceOpenai');
 const express = require("express");
 const {router} = require("./config/configRoutes");
 const {configDatabase} = require("./config/configDatabase");
+require('dotenv').config();
 
 
 async function start() {
